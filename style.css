@@ -298,7 +298,7 @@ body.dark-mode .logo-img {
     filter: brightness(0) invert(1);
 }
 
-.nav {
+.header-nav {
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -2742,6 +2742,17 @@ a:hover > .roll-text .roll-char {
         grid-template-columns: 1fr;
         gap: 2.5rem;
     }
+    .propositions-grid, .choose-grid, .about-excellence-grid, .about-values-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+    }
+    .about-service-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .about-industries-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
     .catalog-showcase-row.alternate .catalog-showcase-media {
         order: 2;
     }
@@ -2786,7 +2797,7 @@ a:hover > .roll-text .roll-char {
     .mobile-menu-toggle {
         display: flex;
     }
-    .nav {
+    .header-nav {
         display: none;
     }
     .section-header h2 {
@@ -2827,6 +2838,16 @@ a:hover > .roll-text .roll-char {
     }
     .oem-capabilities-grid {
         grid-template-columns: 1fr;
+    }
+    .propositions-grid, .choose-grid, .about-excellence-grid, .about-values-grid, .about-service-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .about-industries-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .about-media {
+        margin-top: 2rem;
     }
     .oem-cta-banner {
         padding: 2rem;

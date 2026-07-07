@@ -1,3 +1,5 @@
+const chatbotLogo = new URL('./images/chatbot_logo.png', import.meta.url).href;
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================================================
@@ -640,6 +642,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 12. Chatbot Assistant (PNB-Style Mascot & custom B2B Lead Agent)
     // ==========================================================================
     const initChatbot = () => {
+        if (window.chatbotInitialized) return;
+        window.chatbotInitialized = true;
         // Inject Styles
         const style = document.createElement('style');
         style.innerHTML = `
@@ -876,7 +880,7 @@ document.addEventListener('DOMContentLoaded', () => {
         chatContainer.innerHTML = `
             <!-- Chat Trigger Button (mascot styled) -->
             <div id="ortex-chat-btn" title="Chat with Ortex Assist">
-                <img src="images/chatbot_logo.png" alt="Ortex Assist Mascot">
+                <img src="${chatbotLogo}" alt="Ortex Assist Mascot">
             </div>
 
             <!-- Redirect Confirmation Modal (PNB Style redirect popup) -->
@@ -895,7 +899,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div id="ortex-chat-window">
                 <div class="chat-header">
                     <div class="chat-header-info">
-                        <img src="images/chatbot_logo.png" alt="Ortex Assist Avatar" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; background: #fff; padding: 2px; border: 1px solid rgba(255,255,255,0.2);">
+                        <img src="${chatbotLogo}" alt="Ortex Assist Avatar" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; background: #fff; padding: 2px; border: 1px solid rgba(255,255,255,0.2);">
                         <div class="chat-header-text">
                             <h4>Ortex AI Assist</h4>
                             <span>Online • Customer Support</span>
@@ -941,6 +945,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Toggle chat flow
         chatBtn.addEventListener('click', () => {
+            try {
+                sessionStorage.setItem('chatbotAutoOpened', 'true');
+            } catch (e) {}
+            if (!window.name.includes('_chatbotAutoOpened')) {
+                window.name += '_chatbotAutoOpened';
+            }
             if (chatWindow.classList.contains('open')) {
                 chatWindow.classList.remove('open');
             } else {
@@ -953,6 +963,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         redirectProceed.addEventListener('click', () => {
+            try {
+                sessionStorage.setItem('chatbotAutoOpened', 'true');
+            } catch (e) {}
+            if (!window.name.includes('_chatbotAutoOpened')) {
+                window.name += '_chatbotAutoOpened';
+            }
             redirectModal.classList.remove('open');
             chatWindow.classList.add('open');
             setTimeout(scrollToBottom, 50);
@@ -1090,11 +1106,48 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        // Auto-open chatbot after 5 seconds if not already open
-        setTimeout(() => {
-            if (!chatWindow.classList.contains('open') && !redirectModal.classList.contains('open')) {
-                chatWindow.classList.add('open');
-                scrollToBottom();
+        // Prevent multiple initialization of the auto-open timer
+        if (window.chatbotTimeoutId) {
+            clearTimeout(window.chatbotTimeoutId);
+        }
+
+        // Auto-open chatbot after 5 seconds if not already open and not yet auto-opened in this session
+        window.chatbotTimeoutId = setTimeout(() => {
+            // Check if this is a page reload/refresh to allow auto-open again
+            const navigationEntry = typeof performance !== 'undefined' && typeof performance.getEntriesByType === 'function' 
+                ? performance.getEntriesByType('navigation')[0] 
+                : null;
+            const isReload = navigationEntry && navigationEntry.type === 'reload';
+            
+            if (isReload) {
+                try {
+                    sessionStorage.removeItem('chatbotAutoOpened');
+                } catch (e) {}
+                window.name = window.name.replace('_chatbotAutoOpened', '');
+            }
+
+            let alreadyOpened = false;
+            try {
+                if (sessionStorage.getItem('chatbotAutoOpened')) {
+                    alreadyOpened = true;
+                }
+            } catch (e) {}
+
+            if (window.name.includes('_chatbotAutoOpened')) {
+                alreadyOpened = true;
+            }
+
+            if (!alreadyOpened) {
+                if (!chatWindow.classList.contains('open') && !redirectModal.classList.contains('open')) {
+                    chatWindow.classList.add('open');
+                    scrollToBottom();
+                    try {
+                        sessionStorage.setItem('chatbotAutoOpened', 'true');
+                    } catch (e) {}
+                    if (!window.name.includes('_chatbotAutoOpened')) {
+                        window.name += '_chatbotAutoOpened';
+                    }
+                }
             }
         }, 5000);
     };
