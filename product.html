@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products - Premium Customized Apparel & Merchandise | Ortex Industries</title>
+    <meta name="description" content="Explore Ortex Industries' comprehensive range of customized apparel, caps, promotional garments, election merchandise, and Tiranga flags manufactured to B2B export standards.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .product-varieties-section {
+            padding: clamp(60px, 8vw, 100px) 0;
+            background-color: hsl(var(--background));
+        }
+        .varieties-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        @media (max-width: 1024px) {
+            .varieties-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .varieties-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        .variety-group {
+            background-color: hsl(var(--secondary));
+            border: 1px solid hsl(var(--border));
+            border-radius: var(--radius-lg);
+            padding: clamp(24px, 4vw, 40px);
+            transition: var(--transition);
+        }
+        .variety-group:hover {
+            border-color: hsl(var(--primary-hover));
+            box-shadow: 0 10px 30px -10px hsla(var(--primary), 0.08);
+        }
+        .variety-group h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            color: hsl(var(--foreground));
+            border-bottom: 2px solid hsl(var(--border));
+            padding-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .variety-group h3 svg {
+            width: 24px;
+            height: 24px;
+            color: hsl(var(--primary));
+        }
+        .variety-group p {
+            color: hsl(var(--muted-foreground));
+            font-size: 0.95rem;
+            line-height: 1.55;
+            margin-bottom: 1.5rem;
+        }
+        .variety-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            list-style: none;
+            padding: 0;
+        }
+        @media (max-width: 480px) {
+            .variety-list {
+                grid-template-columns: 1fr;
+            }
+        }
+        .variety-item {
+            font-size: 0.9rem;
+            color: hsl(var(--foreground));
+            font-weight: 600;
+            padding: 8px 12px;
+            background-color: hsl(var(--background));
+            border: 1px solid hsl(var(--border));
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+        .variety-item:hover {
+            border-color: hsl(var(--primary));
+            background-color: hsla(var(--primary), 0.02);
+            transform: translateX(3px);
+        }
+        .variety-item::before {
+            content: "✓";
+            color: hsl(var(--primary-hover));
+            font-weight: 800;
+            font-size: 0.85rem;
+        }
+        .product-card-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: var(--radius) var(--radius) 0 0;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid hsl(var(--border));
+        }
+        .product-catalog-card.elevated {
+            padding: 0;
+            overflow: hidden;
+        }
+        .product-card-content {
+            padding: 0 2rem 2.25rem 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .product-card-content h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            color: hsl(var(--foreground));
+        }
+        .product-card-content p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: hsl(var(--muted-foreground));
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body class="light-mode">
+
+    <!-- Header / Navigation -->
+    <header class="header">
+        <div class="lp-wrap">
+            <div class="header-container">
+                <a href="index.html#hero" class="logo-link">
+                    <img src="images/custom_logo.png" alt="Ortex Industries logo" class="logo-img">
+                </a>
+                
+                <nav class="header-nav">
+                    <a href="index.html#hero" class="nav-link">Home</a>
+                    <a href="product.html" class="nav-link active">Product</a>
+                    <a href="customization.html" class="nav-link">Customization</a>
+                    <a href="oem.html" class="nav-link">OEM & Private Label</a>
+                    <a href="index.html#about" class="nav-link">About Us</a>
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </nav>
+
+                <div class="header-actions">
+                    <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
+                        <!-- Light Mode Icon (Sun) -->
+                        <svg class="sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path></svg>
+                        <!-- Dark Mode Icon (Moon) -->
+                        <svg class="moon-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    </button>
+                    <a href="https://wa.me/919211947188?text=Hello%20Ortex%20Industries%20Team%2C%20I%20am%20interested%20in%20your%20customized%20apparel%20services." target="_blank" class="btn-whatsapp-icon" aria-label="Chat on WhatsApp">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.62.962 3.21 1.468 4.797 1.469 5.378-.001 9.756-4.379 9.759-9.76.002-2.607-1.013-5.059-2.859-6.907C16.438 2.11 13.99 1.096 11.385 1.096 6.006 1.096 1.628 5.474 1.625 10.855c-.001 1.639.489 3.238 1.419 4.7l-.986 3.603 3.699-.97c1.472.842 2.87 1.34 4.545 1.34zM17.476 14.39c-.329-.165-1.948-.96-2.253-1.071-.305-.11-.527-.165-.749.165-.221.329-.857 1.071-1.05 1.29-.193.22-.387.247-.716.082-1.099-.548-1.867-1.026-2.607-2.296-.195-.334-.195-.568-.03-.733.149-.148.329-.384.494-.576.165-.192.22-.329.329-.548.11-.22.055-.412-.028-.577-.082-.165-.749-1.808-1.026-2.476-.27-.648-.544-.56-.749-.57-.193-.01-.415-.011-.637-.011-.222 0-.582.083-.887.412-.305.329-1.164 1.14-1.164 2.784 0 1.644 1.196 3.23 1.361 3.45.165.22 2.353 3.593 5.7 5.039.796.344 1.417.55 1.902.705.8.254 1.528.218 2.103.133.64-.095 1.948-.796 2.223-1.564.276-.768.276-1.426.192-1.563-.083-.138-.305-.22-.634-.385z"/>
+                        </svg>
+                    </a>
+                    <a href="index.html#contact" class="btn btn-primary rounded-full header-cta-btn">
+                        Get quote
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" aria-label="Toggle Mobile Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer">
+        <nav class="mobile-nav">
+            <a href="index.html#hero" class="mobile-nav-link">Home</a>
+            <a href="product.html" class="mobile-nav-link">Product</a>
+            <a href="customization.html" class="mobile-nav-link">Customization</a>
+            <a href="oem.html" class="mobile-nav-link">OEM & Private Label</a>
+            <a href="index.html#about" class="mobile-nav-link">About Us</a>
+            <a href="index.html#contact" class="mobile-nav-link">Contact</a>
+            <a href="index.html#contact" class="btn btn-primary rounded-full mobile-cta">Get quote</a>
+        </nav>
+    </div>
+    <main>
+        <!-- Main Products Grid -->
+        <section class="section bg-secondary" id="product-catalog">
+            <div class="lp-wrap">
+                <div class="section-header">
+                    <h2>Our products</h2>
+                    <p>Comprehensive range of customized apparel and promotional products manufactured to the highest quality standards. From corporate uniforms to political campaign merchandise, we deliver excellence in every piece.</p>
+                </div>
+
+                <div class="products-catalog-grid">
+                    
+                    <!-- 1. Customized T-Shirts -->
+                    <div class="product-catalog-card elevated">
+                        <img src="https://horizons-cdn.hostinger.com/f5bce411-0920-4918-961c-5ad2ed554b68/d8e46c8b7904932b8b30cd1cadd8f45e.jpg" alt="Customized T-Shirts" class="product-card-img" loading="lazy">
+                        <div class="product-card-content">
+                            <h3>Customized T-Shirts</h3>
+                            <p>Polo shirts, round neck, dry fit, sports jerseys, corporate uniforms, event t-shirts, school/college apparel, brand promotion, political campaign, NGO awareness, retail & fashion. Premium quality fabrics with complete customization options.</p>
+                            <button class="catalog-inquiry-link product-inquiry-btn" data-product="Customized T-Shirts">
+                                Learn more
+                                <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 2. Premium Caps -->
+                    <div class="product-catalog-card elevated">
+                        <img src="https://horizons-cdn.hostinger.com/f5bce411-0920-4918-961c-5ad2ed554b68/8169c84b741520e7de5f28f032e219d7.jpg" alt="Premium Caps" class="product-card-img" loading="lazy">
+                        <div class="product-card-content">
+                            <h3>Premium Caps</h3>
+                            <p>Cotton, polyester, polycotton caps. Baseball caps, sports caps, promotional caps, corporate caps, political campaign caps, event & advertising caps. Available in multiple colors with embroidery and printing options.</p>
+                            <button class="catalog-inquiry-link product-inquiry-btn" data-product="Customized Caps">
+                                Learn more
+                                <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 3. Promotional Garments -->
+                    <div class="product-catalog-card elevated">
+                        <img src="https://horizons-cdn.hostinger.com/f5bce411-0920-4918-961c-5ad2ed554b68/3e81165868e054d1e68de2887699f137.jpg" alt="Promotional Garments" class="product-card-img" loading="lazy">
+                        <div class="product-card-content">
+                            <h3>Promotional Garments</h3>
+                            <p>Hoodies, sweatshirts, jackets, track suits, safety jackets, aprons, staff uniforms, volunteer uniforms, event apparel, industrial workwear. Bulk manufacturing with custom branding solutions.</p>
+                            <button class="catalog-inquiry-link product-inquiry-btn" data-product="Corporate Merchandise & Gifting">
+                                Learn more
+                                <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 4. Political Campaign Products -->
+                    <div class="product-catalog-card elevated">
+                        <img src="https://horizons-cdn.hostinger.com/f5bce411-0920-4918-961c-5ad2ed554b68/831325ba4be2500b79a05a0b6ddf1b78.jpg" alt="Political Campaign Products" class="product-card-img" loading="lazy">
+                        <div class="product-card-content">
+                            <h3>Political Campaign Products</h3>
+                            <p>Political t-shirts, campaign caps, political patta/scarves, election merchandise, customized campaign apparel, rally accessories, event branding. Fast turnaround for campaign requirements.</p>
+                            <button class="catalog-inquiry-link product-inquiry-btn" data-product="Campaign & Promotional Apparel">
+                                Learn more
+                                <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 5. Tiranga Flag Manufacturing -->
+                    <div class="product-catalog-card elevated">
+                        <img src="https://horizons-cdn.hostinger.com/f5bce411-0920-4918-961c-5ad2ed554b68/79a7161ef8200ee70e122f7ece108a6f.jpg" alt="Tiranga Flag Manufacturing" class="product-card-img" loading="lazy">
+                        <div class="product-card-content">
+                            <h3>Tiranga Flag Manufacturing</h3>
+                            <p>Cotton flags, polyester flags, paper flags, hand flags, desk flags, vehicle flags, customized event flags. Available in all standard sizes with quality printing and stitching.</p>
+                            <button class="catalog-inquiry-link product-inquiry-btn" data-product="Tiranga Flags & Banners">
+                                Learn more
+                                <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Varieties Detailed Section -->
+        <section class="product-varieties-section" id="product-varieties">
+            <div class="lp-wrap">
+                <div class="section-header">
+                    <span class="badge">Specifications</span>
+                    <h2>Apparel Customization Varieties</h2>
+                    <p>Choose from our comprehensive configurations developed to meet diverse commercial, promotional, and organizational requirements.</p>
+                </div>
+
+                <div class="varieties-grid">
+                    
+                    <!-- Customized T-Shirt Varieties -->
+                    <div class="variety-group">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.37 11.23L12 3l-8.37 8.23a2 2 0 0 0-.63 1.42V19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-6.35a2 2 0 0 0-.63-1.42z"/>
+                                <line x1="12" y1="3" x2="12" y2="21"/>
+                            </svg>
+                            Customized T-Shirt Varieties
+                        </h3>
+                        <p>We manufacture a complete range of t-shirts for every application, from corporate uniforms to promotional campaigns. All products available with full customization options.</p>
+                        <ul class="variety-list">
+                            <li class="variety-item">Polo t-shirts</li>
+                            <li class="variety-item">Round neck t-shirts</li>
+                            <li class="variety-item">Dry fit t-shirts</li>
+                            <li class="variety-item">Sports jerseys</li>
+                            <li class="variety-item">Corporate uniforms</li>
+                            <li class="variety-item">Event t-shirts</li>
+                            <li class="variety-item">School & college apparel</li>
+                            <li class="variety-item">Brand promotion t-shirts</li>
+                            <li class="variety-item">Political campaign t-shirts</li>
+                            <li class="variety-item">NGO awareness t-shirts</li>
+                            <li class="variety-item">Retail & fashion t-shirts</li>
+                        </ul>
+                    </div>
+
+                    <!-- Premium Cap Varieties -->
+                    <div class="variety-group">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 21a9 9 0 0 1 0-18h1a9 9 0 0 1 9 9V17a3 3 0 0 1-3 3h-7z"/>
+                                <path d="M21 12H12"/>
+                            </svg>
+                            Premium Cap Varieties
+                        </h3>
+                        <p>High-quality caps manufactured with premium fabrics and professional finishing. Perfect for corporate branding, promotional events, and campaign merchandise.</p>
+                        <ul class="variety-list">
+                            <li class="variety-item">Cotton caps</li>
+                            <li class="variety-item">Polyester caps</li>
+                            <li class="variety-item">Polycotton caps</li>
+                            <li class="variety-item">Baseball caps</li>
+                            <li class="variety-item">Sports caps</li>
+                            <li class="variety-item">Promotional caps</li>
+                            <li class="variety-item">Corporate caps</li>
+                            <li class="variety-item">Political campaign caps</li>
+                            <li class="variety-item">Event & advertising caps</li>
+                        </ul>
+                    </div>
+
+                    <!-- Political Flag Varieties -->
+                    <div class="variety-group">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                                <line x1="4" y1="22" x2="4" y2="15"/>
+                            </svg>
+                            Political Flag Varieties
+                        </h3>
+                        <p>High-quality, durable political party flags and campaign promotional flags. Available in rectangular, hand-held, and vehicle-mount options with custom printing and vibrant colors.</p>
+                        <ul class="variety-list">
+                            <li class="variety-item">BJP Flags (Bharatiya Janata Party)</li>
+                            <li class="variety-item">Congress Flags (INC)</li>
+                            <li class="variety-item">AAP Flags (Aam Aadmi Party)</li>
+                            <li class="variety-item">Samajwadi Party Flags (SP)</li>
+                            <li class="variety-item">BSP Flags (Bahujan Samaj Party)</li>
+                            <li class="variety-item">CPI & CPI(M) Flags</li>
+                            <li class="variety-item">Custom Party Promotional Flags</li>
+                            <li class="variety-item">Rallies Hand Flags</li>
+                            <li class="variety-item">Election Campaign Car Flags</li>
+                            <li class="variety-item">Party Logo Table & Desk Flags</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Banner Section -->
+        <section class="section text-center" id="custom-cta" style="padding-top: 0;">
+            <div class="lp-wrap">
+                <div class="oem-cta-banner">
+                    <span class="badge bg-white">Custom Manufacturing</span>
+                    <h2>Need a custom product solution?</h2>
+                    <p class="lead-text" style="max-width: 700px; margin: 0 auto 2rem; color: rgba(255, 255, 255, 0.85);">
+                        Our manufacturing capabilities extend beyond standard products. Contact us to discuss your specific requirements and custom manufacturing needs.
+                    </p>
+                    <div class="oem-cta-actions">
+                        <a class="lp-pill-btn primary" href="index.html#contact" style="background-color: #fff; color: hsl(var(--primary));">Get a Free Consultation</a>
+                        <a class="lp-pill-btn outline" href="https://wa.me/919211947188?text=Hello%20Ortex%20Team%2C%20I%20am%20interested%20in%20a%20custom%20apparel%20solution." target="_blank">
+                            💬 Chat on WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Upgraded Keystone-Style Footer -->
+    <footer class="lp-footer">
+        <div class="lp-wrap">
+            
+            <!-- Top: Logo / Brand -->
+            <div class="lp-footer-top">
+                <a href="index.html#hero" class="lp-footer-logo" aria-label="Ortex Industries home">
+                    <img src="images/custom_logo.png" alt="Ortex Industries logo" class="lp-footer-logo-img">
+                </a>
+            </div>
+
+            <!-- Rule divider -->
+            <div class="lp-footer-rule"></div>
+
+            <!-- Bottom: Copyright & Trust badges -->
+            <div class="lp-footer-bot">
+                <span class="lp-footer-copy">
+                    Copyright &copy; 2026 <span class="lp-footer-co">Ortex Industries</span>. All Rights Reserved.
+                </span>
+                <div class="lp-footer-trust">
+                    <span class="lp-footer-trust-badge">Quality assured</span>
+                    <span class="lp-footer-trust-badge">Secure orders</span>
+                    <span class="lp-footer-trust-badge">PAN India delivery</span>
+                    <span class="lp-footer-trust-badge">Worldwide export</span>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919211947188?text=Hello%20Ortex%20Industries%20Team%2C%20I%20am%20visiting%20your%20products%20page%20and%20need%20assistance." class="whatsapp-btn-float" target="_blank" aria-label="Chat on WhatsApp">
+        <svg fill="currentColor" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+    </a>
+
+    <!-- Application Script -->
+    <script type="module" src="app.js"></script>
+</body>
+</html>
