@@ -1,4 +1,4 @@
-# Ortex Industries Clone - Custom Apparel Manufacturer Website
+# Ortex Industries - Custom Apparel Manufacturer Website
 
 A premium, interactive clone of the Ortex Industries merchandise website, built with HTML, Vanilla CSS, and JavaScript.
 
